@@ -1,7 +1,6 @@
 package com.itproger.homeworkmvvm.mvvm
 
 import androidx.lifecycle.ViewModel
-import com.itproger.homeworkmvvm.mvvm.NoteModel
 
 class NoteViewModel : ViewModel() {
     val noteList = mutableListOf<NoteModel>()
@@ -9,7 +8,7 @@ class NoteViewModel : ViewModel() {
         noteList.add(note)
     }
 
-    fun toggleNoteComletion(note: NoteModel) {
+    fun toggleNote(note: NoteModel) {
         note.isCompleted = !note.isCompleted
     }
 

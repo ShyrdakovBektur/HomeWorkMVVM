@@ -11,7 +11,7 @@ class NoteAdapter (private val viewModel: NoteViewModel) :
     Adapter<NoteAdapter.NoteViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-    val binding =ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NoteViewHolder(binding)
     }
 
@@ -29,7 +29,8 @@ class NoteAdapter (private val viewModel: NoteViewModel) :
             binding.noteTitle.text = note.title
             binding.noteCheckbox.isChecked = note.isCompleted
             binding.noteCheckbox.setOnCheckedChangeListener { _, isChecked ->
-                note.isCompleted = isChecked
+                viewModel.toggleNote(note)
+                notifyDataSetChanged()
             }
             binding.root.setOnLongClickListener {
                 showDeleteNoteDialog(note)
